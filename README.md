@@ -1,3 +1,3 @@
 # github-Demo
 This is my first repository.<br>
-Author - Luther Martin King
+Author - Luther Martin King And Jerome K Jerome 
