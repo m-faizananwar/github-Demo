@@ -1,0 +1,108 @@
+Git: 
+
+ls 								// to check all directories
+git --version							// to check git version
+
+
+Configuring Git:
+git config --global user.name"My Name" 				//whatever you want to be called
+git config --global user.email"someone@email.com" 		//enter your github gmail account
+git config --list // Gives credentials of our account
+
+Cloning a repository on our local Machine :
+ clone git <-some Link->  					// Enter link from repository of github 
+
+Status of a repository :
+ git status		  					// Gives the status of file like if it's up to date or number of commits
+
+Add and Commit Process :
+ git add <- file name ->    					//stages the file i.e adds new / untracked or changed files in your working directory to the staging area of git
+ git add .                  					// stages all files or changes in the repository
+			 					// Now git status will tell us that files are need to be commited
+ //Commit - > is the record of change
+ git commit -m "Some message" 					//commits all changes with writing messages
+ // Even after these steps our changes will not be reflected on github
+
+File Push to Github :
+ git push origin main   					// pushes the changes to github main
+ // in this command git push means push the changes to origin(remote repository whose link was copied) main(branch name)
+
+Adding a repository from local to github i.e creating a repo on pc and uploading on github :
+	Steps :-
+	i)	create a new folder
+	ii)	Check it using ls -a command it will not have .git file
+	iii)    git init 				// command creates a empty .git directory inside folder
+	iv)	Now make the changes in the code and git will track them after add and commit commands
+	v)	Now if you want to upload it on github create a new repo on github(with no readme file because then you will have to clone it into pc)
+	vi)	git remote add orgin <- New created Repo Link ->  				//means add remote repo with the name origin(not necessarily origin i.e can be changed but once changes should be identified by that name)  
+	vii)	git remote -v   								// verifies remote repo
+
+Branches : 
+git checkout -b <-new branch name-> 			// creates new branch
+git branch   						// Checks the branch in which we are in
+git branch -M name 					// changes the name of branch to name and then also use 
+git push origin main 					//to push to github
+git push -u origin main 				// if we are working on a project for a long time then we don't have to use orgin main every time
+git push -u						// Just use git push -u next time
+git checkout <-branch name-> 				// Navigates through branches i.e switches
+git branch -d <-branch name-> 				// To delete a branch
+git branch -a						// Shows all branches
+git diff <-branch name-> 				// Compares both commits, branches, files and more
+
+
+Merging two Branches : 
+way 1:
+git diff <-branch name-> 			// Compares both commits, branches, files and more
+git merge <-branch name->  			// Merges both branches and checks if both have +ve change
+
+way 2: Pull request (PR)
+just create pull request from juniors to seniors and the senior controlling main branch accesses it for detail do some web surfing for it
+
+Note : After merging data in the remote repo of github we ain't being shown the updated data in the local repos 
+
+Solution :
+- > pull command
+git pull origin main   			// downloads all data from remote and fetch into local repos and updates it
+
+
+Undoing Changes : 
+
+Case i : Staged changes(added changes)
+	git reset <-file name->			// Reset all staged changes in that file
+	git reset 				// reset all staged changes in repo
+
+Case ii : Commited changes (for one commit)
+	git reset HEAD~1			// git stores commits int form of boxes with thw latest named as HEAD so previous commit before HEAD is HEAD~1
+
+Case iii : Commited changes (for many commits) 
+	git log					// gives the history of every commit with hash code
+	git reset <-commit hash->		// moves to the back commit but the changes after that commit are also not staged
+	git reset --hard <-commit hash->	// moves to the back commit and changes after that commit are also not shown
+	
+
+
+
+
+File Types : 
+- > Untracked (new files made in code editor that git does'nt track yet before adding)
+	Also in untracked file any changes made will not be tracked by git
+- > Modified (changed files like any file in which any change is done)
+- > Staged (file is ready to be commited i.e file is added but not commited)
+- > unmodified (unchanged means they are tracked i.e step after staged file)
+
+General Notes : 
+
+- > Remote means github repository
+- > Local means laptop or pc on which you are accessing github
+- > ls  							// Command used to show all directories
+- > ls -a 							//used to show all files including hidden files
+- > .git  							// is a hidden file showing folder is tracked by git which can be shown by ls -a command
+- > if we have pushed a branch into github after creating and delete from git then we have to use command
+git push localrepo :branchname 					// which also removes it from github where branchname is deleted branch
+
+
+Merge Conflicts : 
+An event that takes place when github is not able to resolve differences in code b/w two commits while merging
+Vs code provides us options
+
+Fork : it's a copy of other's project on our github account
